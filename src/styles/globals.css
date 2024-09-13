@@ -4,10 +4,7 @@
 
 /* Custom Classes */
 @layer components {
-  body {
-    @apply scroll-smooth font-primary;
-  }
-
+  
   /* 1. Gradients */
   .gradient-1 {
     @apply bg-gradient-to-r from-[#FB8500] to-[#FFC079];
