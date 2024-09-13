@@ -2,6 +2,7 @@ import { User } from "@/database";
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 import { connectDB } from "@/middlewares/api";
+import bcrypt from "bcrypt";
 
 const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const { emailOrUsername, password } = req.body;
@@ -19,6 +20,14 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!user) {
       return res.status(404).json({
+        success: false,
+        message: "Invalid credentials",
+      });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({
         success: false,
         message: "Invalid credentials",
       });
