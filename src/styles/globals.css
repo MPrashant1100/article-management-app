@@ -2,26 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom Classes */
+@layer components {
+  body {
+    @apply scroll-smooth font-primary;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  /* 1. Gradients */
+  .gradient-1 {
+    @apply bg-gradient-to-r from-[#FB8500] to-[#FFC079];
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .gradient-2 {
+    @apply bg-gradient-to-r from-[#FFB703] to-[#F4B108];
+  }
+
+  .gradient-3 {
+    @apply bg-gradient-to-r from-[#375FEF] to-[#6D29FE];
+  }
+
+  .gradient-4 {
+    @apply bg-gradient-to-r from-[#FF76E1] to-[#D0AA7D];
+  }
+
+  .gradient-5 {
+    @apply bg-gradient-to-b from-[#923CFF] to-[#4E4EFF];
+  }
+
+  .gradient-6 {
+    @apply bg-gradient-to-b from-[#F0F3FF] to-[#FFA4C5];
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-b from-[#070607] to-[#1B1B1B];
+  }
+
+  /* 2. Fonts */
+  .heading-1 {
+    @apply text-header-1 font-black text-contentLight;
+  }
+
+  .heading-2 {
+    @apply text-header-2 font-bold text-contentLight;
+  }
+
+  .heading-3 {
+    @apply text-header-3 font-bold text-contentLight;
+  }
+
+  .heading-4 {
+    @apply text-header-4 font-semibold text-contentLight;
+  }
+
+  .heading-5 {
+    @apply text-header-5 font-semibold text-contentLight;
+  }
+  .label {
+    @apply text-strong-text font-semibold text-greyDark;
+  }
+
+  .subtitle {
+    @apply text-subtitle font-normal text-contentLight;
+  }
+
+  .paragraph {
+    @apply text-paragraph font-normal text-contentLight;
+  }
+
+  .strong-text {
+    @apply text-strong-text font-semibold text-contentLight;
+  }
+
+  .pre-title {
+    @apply text-pre-title font-medium text-contentLight;
+  }
+
+  .button-text {
+    @apply text-button-text font-bold text-contentLight;
+  }
+
+  /* Image */
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  /* Link */
+  .link {
+    @apply text-button-text font-bold text-contentLight;
+  }
+
+  .button {
+    @apply w-full rounded-1 text-button-text font-bold text-contentLight;
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+
+  .w-92 {
+    width: 22rem;
+  }
+
+  .w-72 {
+    width: 18rem;
   }
 }
