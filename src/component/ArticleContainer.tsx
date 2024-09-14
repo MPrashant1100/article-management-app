@@ -1,7 +1,7 @@
-import { ArticleContainer, Text } from "@/component";
+import { AddArticle, Text, UserArticles } from "@/component";
 import { useUser } from "@/hooks";
 
-const Dashboard = () => {
+const ArticleContainer = () => {
   const { user, loading } = useUser()
 
   if(loading) {
@@ -12,10 +12,11 @@ const Dashboard = () => {
     return null
   }
   return (
-    <div>
-      <ArticleContainer/>
+    <div className="flex">
+      <AddArticle/>
+      <UserArticles/>
     </div>
   );
 };
 
-export default Dashboard;
+export default ArticleContainer;

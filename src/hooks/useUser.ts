@@ -6,6 +6,7 @@ interface User {
   id: string;
   email: string;
   username: string;
+  token: string;
 }
 
 const useUser = () => {
@@ -28,7 +29,7 @@ const useUser = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setUser(data);
+        setUser({ ...data, token })
       } catch (error) {
         console.error("Failed to fetch user:", error);
         setUser(null);
