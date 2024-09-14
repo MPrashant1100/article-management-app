@@ -9,6 +9,7 @@ import TextArea from "./Common/Form/TextArea";
 import AddArticle from "./AddArticle";
 import UserArticles from "./UserArticle";
 import ArticleContainer from "./ArticleContainer";
+import AllArticle from "./AllArticle";
 
 export {
     Text,
@@ -22,4 +23,5 @@ export {
     AddArticle,
     UserArticles,
     ArticleContainer,
+    AllArticle,
 }
