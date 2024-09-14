@@ -1,13 +1,24 @@
 import { Article } from "@/database";
 import { NextApiRequest, NextApiResponse } from "next";
 import { connectDB } from "@/middlewares/api";
+import jwt from "jsonwebtoken";
 
-const getAllArticles = async (req: NextApiRequest, res: NextApiResponse) => {
+const getUserArticles  = async (req: NextApiRequest, res: NextApiResponse) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
   try {
-    const allArticles = await Article.find().sort({ publishDate: -1 });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
+      id: string;
+    };
+
+    const articles = await Article.find({ userId: decoded.id }).sort({ publishDate: -1 });
+
     return res.status(200).json({
       success: true,
-      allArticles,
+      articles,
     });
   } catch (error) {
     return res.status(500).json({
@@ -19,8 +30,9 @@ const getAllArticles = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await connectDB(res);
+
   if (req.method === "GET") {
-    return getAllArticles(req, res);
+    return getUserArticles (req, res);
   } else {
     return res.status(404).json({
       success: false,
