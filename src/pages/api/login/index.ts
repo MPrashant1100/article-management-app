@@ -34,7 +34,7 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, {
-      expiresIn: "1h",
+      expiresIn: "5h",
     });
 
     console.log("Login Token", token)
