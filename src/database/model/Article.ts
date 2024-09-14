@@ -1,15 +1,5 @@
+import { ArticleDocumentModel } from "@/interfaces";
 import mongoose, { Schema } from "mongoose";
-
-interface ArticleDocumentModel {
-  title: string;
-  image?: string;
-  video?: string;
-  description: string;
-  publishDate: Date;
-  articleText: string;
-  likes: number;
-  userId: mongoose.Types.ObjectId;
-}
 
 const ArticleSchema: Schema<ArticleDocumentModel> =
   new Schema<ArticleDocumentModel>(

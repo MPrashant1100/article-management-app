@@ -1,10 +1,5 @@
+import { UserDocumentModel } from "@/interfaces";
 import mongoose, { Schema } from "mongoose";
-
-interface UserDocumentModel {
-  username: string;
-  email: string;
-  password: string;
-}
 
 const UserSchema: Schema<UserDocumentModel> =
   new mongoose.Schema<UserDocumentModel>({

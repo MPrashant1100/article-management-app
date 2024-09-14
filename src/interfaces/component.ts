@@ -44,3 +44,14 @@ export interface LinkProps {
   active?: boolean;
   onClick?: () => void;
 }
+
+export interface TextAreaFieldProps {
+  label: string;
+  type: HTMLInputTypeAttribute;
+  value: string | number | undefined;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
+  rows?: number;
+  className?: string;
+  disabled?: boolean;
+}
+
