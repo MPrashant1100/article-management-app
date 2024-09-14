@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface UserLoginProps {
-  toggleView: () => void; 
+  toggleView: () => void;
 }
 
 const UserLogin = ({ toggleView }: UserLoginProps) => {
@@ -19,6 +19,9 @@ const UserLogin = ({ toggleView }: UserLoginProps) => {
         emailOrUsername,
         password,
       });
+
+      localStorage.setItem("token", loginUser.data.token);
+
       setSuccessMessage("User Login successfully!");
       console.log("Login successful:", loginUser.data);
 

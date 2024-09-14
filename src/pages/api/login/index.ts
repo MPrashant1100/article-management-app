@@ -37,7 +37,7 @@ const loginUser = async (req: NextApiRequest, res: NextApiResponse) => {
       expiresIn: "1h",
     });
 
-    console.log("Here", token)
+    console.log("Login Token", token)
     
     return res.status(200).json({
       success: true,
