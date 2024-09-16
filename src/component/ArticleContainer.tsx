@@ -24,7 +24,7 @@ const ArticleContainer = () => {
     return null;
   }
   return (
-    <div className="flex flex-col w-full p-4 h-screen ">
+    <div className="flex flex-col w-full p-4 md:ml-4 h-screen m-2">
       <div className="md:w-1/4 p-2 md:border-r border-greyDark md:fixed md:top-20 md:left-0 md:h-auto bg-white">
         <AddArticle />
       </div>
