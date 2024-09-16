@@ -17,14 +17,12 @@ const Dashboard = () => {
   }
   return (
     <div className="flex flex-col h-screen">
-    <Header />
-
-    <div className="flex overflow-auto">
-      <ArticleContainer />
+      <Header />
+      <div className="flex overflow-auto">
+        <ArticleContainer />
+      </div>
+      <Footer />
     </div>
-
-    <Footer />
-  </div>
   );
 };
 

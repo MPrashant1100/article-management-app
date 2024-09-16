@@ -66,7 +66,7 @@ const UserArticles = ({ refresh }: UserArticlesProps) => {
           {articles.map((article) => (
             <div
               key={article._id}
-              className="flex flex-col gap-1 border md:p-4 p-2 mx-auto md:w-5/6 w-full"
+              className="flex flex-col gap-1 border md:p-4 p-2 mx-auto md:w-5/6 w-full overflow-hidden break-words"
             >
               <div className="flex items-center p-1 gap-1">
                 <Text level="h5" className="heading-5 text-secondary">
