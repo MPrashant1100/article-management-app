@@ -7,13 +7,13 @@ const AddArticle = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [articleText, setArticleText] = useState("");
-  const [image, setImage] = useState("");
-  const [video, setVideo] = useState("");
+  const [image, setImage] = useState<string | ArrayBuffer | null>("");
+  const [video, setVideo] = useState<string | ArrayBuffer | null>("");
   const { user, loading } = useUser();
 
   if (loading) {
     return (
-      <Text level="h3" className="haeding-3 text-secondary">
+      <Text level="h3" className="heading-3 text-secondary">
         Loading....
       </Text>
     );
@@ -22,6 +22,20 @@ const AddArticle = () => {
   if (!user) {
     return null;
   }
+
+  const handleFileChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setFile: React.Dispatch<React.SetStateAction<string | ArrayBuffer | null>>
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFile(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleAddArticle = async () => {
     try {
@@ -37,6 +51,7 @@ const AddArticle = () => {
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -54,64 +69,61 @@ const AddArticle = () => {
   };
 
   return (
-    <>
-      <div className="flex p-4">
-        <div className="flex flex-col gap-4">
-          <div className="flex">
-            <Text level="h4" className="heading-4 text-greyDark">
-              Add a new article
-            </Text>
-          </div>
-          <div className="flex flex-col gap-3 border border-2 p-2 rounded-xl">
-            <InputField
-              onChange={(e) => setTitle(e.target.value)}
-              type="text"
-              value={title}
-              placeholder="Title"
-              className="text-greyDark"
-            />
-            <InputField
-              onChange={(e) => setDescription(e.target.value)}
-              type="text"
-              value={description}
-              placeholder="Description"
-              className="text-greyDark"
-            />
-            <TextArea
-              label="Article Text"
-              type="text"
-              value={articleText}
-              onChange={(e) => setArticleText(e.target.value)}
-            />
-            <InputField
-              onChange={(e) => setVideo(e.target.value)}
-              type="file"
-              value={video}
-              placeholder="Video URL"
-              className="text-greyDark"
-            />
-            <InputField
-              onChange={(e) => setImage(e.target.value)}
-              type="text"
-              value={image}
-              placeholder="Image URL"
-              className="text-greyDark"
-            />
-          </div>
-          <div className="flex">
-            <Button
-              variant="PRIMARY"
-              onClick={handleAddArticle}
-              className="w-full rounded-xl px-2 mx-1"
-              size="md"
-            >
-              Add Article
-            </Button>
-          </div>
+    <div className="flex px-4 py-auto ">
+      <div className="flex flex-col gap-4">
+        <div className="flex">
+          <Text level="h4" className="heading-4 text-greyDark">
+            Add a new article
+          </Text>
         </div>
-
+        <div className="flex flex-col gap-3 border border-2 p-2 rounded-xl">
+          <InputField
+            onChange={(e) => setTitle(e.target.value)}
+            type="text"
+            value={title}
+            placeholder="Title"
+            className="text-greyDark"
+          />
+          <InputField
+            onChange={(e) => setDescription(e.target.value)}
+            type="text"
+            value={description}
+            placeholder="Description"
+            className="text-greyDark"
+          />
+          <TextArea
+            label="Article Text"
+            type="text"
+            value={articleText}
+            onChange={(e) => setArticleText(e.target.value)}
+          />
+          <InputField
+            onChange={(e) => handleFileChange(e, setVideo)}
+            type="file"
+            value={""}
+            placeholder="Upload Video"
+            className="text-greyDark"
+          />
+          <InputField
+            onChange={(e) => handleFileChange(e, setImage)}
+            type="file"
+            value={""}
+            placeholder="Upload Image"
+            className="text-greyDark"
+          />
+        </div>
+        <div className="flex">
+          <Button
+            variant="PRIMARY"
+            onClick={handleAddArticle}
+            className="w-full rounded-xl px-2 mx-1"
+            size="md"
+          >
+            Add Article
+          </Button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

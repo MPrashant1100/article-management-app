@@ -21,6 +21,8 @@ const ProfilePopover = () => {
           src="/profile-user.svg"
           alt={user?.username || "User Avatar"}
           className="rounded-full h-12 w-12"
+          fullHeight={false}
+          fullWidth={false}
         />
       </div>
 

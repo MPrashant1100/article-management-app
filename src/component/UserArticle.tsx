@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@/hooks";
 import { ArticleDocumentModel } from "@/interfaces";
-import { Text } from "@/component";
+import { Image, Text } from "@/component";
 
 const UserArticles = () => {
   const [articles, setArticles] = useState<ArticleDocumentModel[]>([]);
@@ -33,25 +33,25 @@ const UserArticles = () => {
 
   const formatPublishDate = (publishDate: Date | string) => {
     const now = new Date();
-    const postDate = typeof publishDate === "string" ? new Date(publishDate) : publishDate;
+    const postDate =
+      typeof publishDate === "string" ? new Date(publishDate) : publishDate;
     const timeDiffMs = now.getTime() - postDate.getTime();
     const minutesDiff = Math.floor(timeDiffMs / (1000 * 60));
     const hoursDiff = Math.floor(timeDiffMs / (1000 * 60 * 60));
-  
+
     if (minutesDiff < 60) {
       if (minutesDiff === 0) {
-        return 'Just now'; 
+        return "Just now";
       }
       return `${minutesDiff}m`;
     }
-  
+
     if (hoursDiff < 24) {
       return `${hoursDiff}h`;
     }
-  
+
     return postDate.toLocaleDateString();
   };
-  
 
   return (
     <div className="p-2">
@@ -65,7 +65,11 @@ const UserArticles = () => {
               <Text level="h5" className="heading-5 text-secondary">
                 {user.username}
               </Text>
-              <Text level="p" className="paragraph text-greyDark" textCenter={true}>
+              <Text
+                level="p"
+                className="paragraph text-greyDark"
+                textCenter={true}
+              >
                 .
               </Text>
               <Text level="p" className="paragraph text-greyDark">
@@ -81,6 +85,20 @@ const UserArticles = () => {
             <Text level="p" className="paragraph text-greyDark">
               {article.articleText}
             </Text>
+            {article.image && (
+              <Image
+                src={article.image}
+                alt={article.title}
+                className="my-2 rounded-lg h-48"
+              />
+            )}
+            {article.video && (
+              <video
+                src={article.video}
+                controls
+                className="my-2 rounded-lg"
+              />
+            )}
           </div>
         ))}
       </div>
