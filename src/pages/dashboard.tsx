@@ -1,20 +1,25 @@
-import { ArticleContainer, Text } from "@/component";
+import { ArticleContainer, Footer, Header, Text } from "@/component";
 import { useUser } from "@/hooks";
 
 const Dashboard = () => {
-  const { user, loading, logout } = useUser()
+  const { user, loading } = useUser();
 
-  if(loading) {
-    return <Text level="h3" className="haeding-3 text-secondary">Loading....</Text>
+  if (loading) {
+    return (
+      <Text level="h3" className="haeding-3 text-secondary">
+        Loading....
+      </Text>
+    );
   }
 
-  if(!user) {
-    return null
+  if (!user) {
+    return null;
   }
   return (
     <div>
-      <ArticleContainer/>
-      <button onClick={logout}>Logout</button>
+      <Header/>
+      <ArticleContainer />
+      <Footer/>
     </div>
   );
 };
