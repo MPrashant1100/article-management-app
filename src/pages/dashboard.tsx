@@ -6,7 +6,7 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <Text level="h3" className="haeding-3 text-secondary">
+      <Text level="h3" className="heading-3 text-secondary">
         Loading....
       </Text>
     );

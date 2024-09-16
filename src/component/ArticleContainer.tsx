@@ -30,11 +30,11 @@ const ArticleContainer = () => {
   };
 
   return (
-    <div className="flex flex-col w-full p-4 md:ml-4 h-screen m-2">
-      <div className="md:w-1/4 p-2 md:border-r border-greyDark md:fixed md:top-20 md:left-0 md:h-auto bg-white">
+    <div className="flex flex-col w-full p-2 md:p-4 md:ml-4 h-screen m-2">
+      <div className="md:w-1/4 w-full p-2 md:border-r border-greyDark md:fixed md:top-20 md:left-0 md:h-auto bg-white">
         <AddArticle onArticleAdded={handleArticleAdded}/>
       </div>
-      <div className="md:w-3/4 p-4 md:ml-auto">
+      <div className="md:w-3/4 p-4 md:ml-auto w-full">
         <div className="flex justify-between mb-4">
           <Button
             variant="SQUARE"
