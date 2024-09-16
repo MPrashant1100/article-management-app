@@ -41,13 +41,19 @@ const useUser = () => {
     fetchUser();
   }, []);
 
+  const logout = async () => {
+    localStorage.removeItem("token"); 
+    setUser(null); 
+    router.push("/"); 
+  };
+
   useEffect(() => {
     if (!loading && user === null) {
       router.push("/");
     }
   }, [loading, user, router]);
 
-  return { user, loading };
+  return { user, loading, logout };
 };
 
 export default useUser;
