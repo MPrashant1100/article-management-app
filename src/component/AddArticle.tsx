@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button, InputField, Text, TextArea } from "@/component";
 import axios from "axios";
 import { useUser } from "@/hooks";
+import { onArticleAddedProps } from "@/interfaces";
 
-const AddArticle = () => {
+const AddArticle = ({ onArticleAdded }: onArticleAddedProps) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [articleText, setArticleText] = useState("");
@@ -63,6 +64,8 @@ const AddArticle = () => {
         setImage("");
         setVideo("");
       }
+
+      onArticleAdded();
     } catch (error) {
       alert("Failed to add article. Please try again.");
     }
@@ -97,13 +100,13 @@ const AddArticle = () => {
             value={articleText}
             onChange={(e) => setArticleText(e.target.value)}
           />
-          <InputField
+          {/* <InputField
             onChange={(e) => handleFileChange(e, setVideo)}
             type="file"
             value={""}
             placeholder="Upload Video"
             className="text-greyDark"
-          />
+          /> */}
           <InputField
             onChange={(e) => handleFileChange(e, setImage)}
             type="file"

@@ -55,3 +55,10 @@ export interface TextAreaFieldProps {
   disabled?: boolean;
 }
 
+export interface onArticleAddedProps {
+  onArticleAdded: () => void;
+}
+
+export interface UserArticlesProps {
+  refresh: boolean; 
+}
