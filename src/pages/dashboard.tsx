@@ -6,7 +6,7 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <Text level="h3" className="haeding-3 text-secondary">
+      <Text level="h3" className="heading-3 text-secondary">
         Loading....
       </Text>
     );
@@ -17,14 +17,12 @@ const Dashboard = () => {
   }
   return (
     <div className="flex flex-col h-screen">
-    <Header />
-
-    <div className="flex overflow-auto">
-      <ArticleContainer />
+      <Header />
+      <div className="flex overflow-auto">
+        <ArticleContainer />
+      </div>
+      <Footer />
     </div>
-
-    <Footer />
-  </div>
   );
 };
 

@@ -72,8 +72,8 @@ const AddArticle = ({ onArticleAdded }: onArticleAddedProps) => {
   };
 
   return (
-    <div className="flex px-4 py-auto ">
-      <div className="flex flex-col gap-4">
+    <div className="flex md:px-2 py-auto w-full">
+      <div className="flex flex-col gap-2 mx-auto w-full p-2">
         <div className="flex">
           <Text level="h4" className="heading-4 text-greyDark">
             Add a new article
