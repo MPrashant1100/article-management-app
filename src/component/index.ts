@@ -9,6 +9,10 @@ import TextArea from "./Common/Form/TextArea";
 import AddArticle from "./AddArticle";
 import UserArticles from "./UserArticle";
 import ArticleContainer from "./ArticleContainer";
+import AllArticle from "./AllArticle";
+import ProfilePopover from "./Common/ProfilePopover";
+import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 
 export {
     Text,
@@ -22,4 +26,8 @@ export {
     AddArticle,
     UserArticles,
     ArticleContainer,
+    AllArticle,
+    ProfilePopover,
+    Header,
+    Footer,
 }

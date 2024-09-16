@@ -10,6 +10,7 @@ const getAllArticles = async (req: NextApiRequest, res: NextApiResponse) => {
       allArticles,
     });
   } catch (error) {
+    console.error("Error fetching articles: ", error);
     return res.status(500).json({
       success: false,
       message: "Internal Server Error",
