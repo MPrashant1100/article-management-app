@@ -1,7 +1,7 @@
 import { ArticleDocumentModel } from "@/interfaces";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Text } from "@/component";
+import { Text, Image } from "@/component";
 import { useUser } from "@/hooks";
 
 const AllArticle = () => {
@@ -82,6 +82,20 @@ const AllArticle = () => {
               <Text level="p" className="paragraph text-greyDark">
                 {article.articleText}
               </Text>
+              {article.image && (
+              <Image
+                src={article.image}
+                alt={article.title}
+                className="my-2 rounded-lg h-48"
+              />
+            )}
+            {article.video && (
+              <video
+                src={article.video}
+                controls
+                className="my-2 rounded-lg"
+              />
+            )}
             </div>
           ))}
         </div>

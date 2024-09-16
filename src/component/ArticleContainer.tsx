@@ -24,11 +24,11 @@ const ArticleContainer = () => {
     return null;
   }
   return (
-    <div className="flex w-full p-4">
-      <div className="w-1/4 p-2 border-r border-greyDark">
+    <div className="flex flex-col w-full p-4 h-screen ">
+      <div className="md:w-1/4 p-2 md:border-r border-greyDark md:fixed md:top-20 md:left-0 md:h-auto bg-white">
         <AddArticle />
       </div>
-      <div className="w-3/4 p-4">
+      <div className="md:w-3/4 p-4 md:ml-auto">
         <div className="flex justify-between mb-4">
           <Button
             variant="SQUARE"

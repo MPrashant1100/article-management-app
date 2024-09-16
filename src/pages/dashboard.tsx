@@ -16,11 +16,15 @@ const Dashboard = () => {
     return null;
   }
   return (
-    <div>
-      <Header/>
+    <div className="flex flex-col h-screen">
+    <Header />
+
+    <div className="flex overflow-auto">
       <ArticleContainer />
-      <Footer/>
     </div>
+
+    <Footer />
+  </div>
   );
 };
 
