@@ -4,7 +4,9 @@ import { connectDB } from "@/middlewares/api";
 
 const getAllArticles = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const allArticles = await Article.find().sort({ publishDate: -1 });
+    const allArticles = await Article.find()
+    .sort({ publishDate: -1 })
+    .populate("userId", "username");
     return res.status(200).json({
       success: true,
       allArticles,

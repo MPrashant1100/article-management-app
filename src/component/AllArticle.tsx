@@ -6,7 +6,7 @@ import { useUser } from "@/hooks";
 
 const AllArticle = () => {
   const [articles, setArticles] = useState<ArticleDocumentModel[]>([]);
-  const { user, loading } = useUser();
+  const { loading } = useUser();
 
   useEffect(() => {
     const fetchAllArticles = async () => {
@@ -51,7 +51,7 @@ const AllArticle = () => {
 
   return (
     <div className="md:p-2">
-      <div className="flex flex-col border border-2 p-2 md:p-4 mx-auto rounded-xl">
+      <div className="flex flex-col border border-2 p-2 md:p-4 mx-auto rounded-xl w-full">
         <Text
           level="h4"
           className="heading-4 text-greyDark font-bold mb-2 pl-4"
@@ -62,11 +62,12 @@ const AllArticle = () => {
           {articles.map((article) => (
             <div
               key={article._id}
-              className="flex flex-col gap-1 border md:p-4 p-2 mx-auto md:w-5/6"
+              className="flex flex-col gap-1 border md:p-4 p-2 mx-auto md:w-5/6 overflow-hidden break-words w-full"
             >
               <div className="flex items-center p-1 gap-1">
-                <Text level="h5" className="heading-5 text-secondary">
-                  {user ? user.username : "Unknown Author"}
+                <Text level="h5" className="heading-5 text-secondary overflow-hidden break-words">
+                  {article.userId.username || "Unknown Author"}
+                  {/* {user ? user.username : "Unknown Author"} */}
                 </Text>
                 <Text
                   level="p"
