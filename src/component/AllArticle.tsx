@@ -12,7 +12,6 @@ const AllArticle = () => {
     const fetchAllArticles = async () => {
       try {
         const allArticles = await axios.get("/api/article");
-        console.log("All", allArticles);
         setArticles(allArticles.data.allArticles || []);
       } catch (error) {
         console.error("Failed to fetch all articles");
