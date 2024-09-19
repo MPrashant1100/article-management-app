@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 
 export interface UserDocumentModel {
     username: string;
@@ -15,5 +14,7 @@ export interface ArticleDocumentModel {
     publishDate: Date;
     articleText: string;
     likes: number;
-    userId: mongoose.Types.ObjectId;
+    userId: {
+      username: string; 
+    };
   }
