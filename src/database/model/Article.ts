@@ -28,7 +28,7 @@ const ArticleSchema: Schema<ArticleDocumentModel> =
       },
       likes: {
         type: Number,
-        default: 0,
+        default: 1,
       },
       userId: {
         type: mongoose.Schema.Types.ObjectId,
